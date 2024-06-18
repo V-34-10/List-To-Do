@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Go Notes</string>
+    <string name="add_note">add tasks</string>
 </resources>
