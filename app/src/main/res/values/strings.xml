@@ -5,4 +5,9 @@
     <string name="note_text">Task text</string>
     <string name="save">Save</string>
     <string name="clear">Clear</string>
+    <string name="mes_dialog">Do you really want to delete this note?</string>
+    <string name="mes_dialog_yes">Yes</string>
+    <string name="mes_dialog_no">No</string>
+    <string name="first_notes">Text</string>
+    <string name="text_btn_delete">Delete</string>
 </resources>
