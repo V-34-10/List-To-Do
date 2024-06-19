@@ -4,8 +4,9 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -26,7 +27,7 @@ class TasksAdapter(
         val onClickDelete: (Task) -> Unit
     ) : RecyclerView.ViewHolder(view) {
         private val title = view.findViewById<TextView>(R.id.title)
-        private val deleteButton = view.findViewById<Button>(R.id.delete_button)
+        private val deleteButton = view.findViewById<ImageView>(R.id.delete_button)
         private var note: Task? = null
 
         init {
@@ -67,10 +68,11 @@ class TasksAdapter(
         val task = getItem(position)
         holder.bind(task)
 
-        // Set background color based on task.color
         val context = holder.itemView.context
         val backgroundColor = ContextCompat.getColor(context, task.color)
-        holder.itemView.setBackgroundColor(backgroundColor)
+        val cardView = holder.itemView.findViewById<CardView>(R.id.cardView)
+        cardView.setCardBackgroundColor(backgroundColor)
+        cardView.radius = 16f
     }
 
     object UserDiffCallback : DiffUtil.ItemCallback<Task>() {
