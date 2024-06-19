@@ -13,10 +13,10 @@
         android:layout_marginStart="@dimen/dp16"
         android:layout_marginTop="@dimen/dp32"
         android:layout_marginEnd="@dimen/dp16"
+        android:hint="@string/note_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/note_title">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -33,10 +33,10 @@
         android:layout_marginStart="@dimen/dp16"
         android:layout_marginTop="@dimen/dp32"
         android:layout_marginEnd="@dimen/dp16"
+        android:hint="@string/note_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        android:hint="@string/note_text">
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -46,22 +46,68 @@
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <LinearLayout
+        android:id="@+id/colorPalette"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text">
+
+        <ImageButton
+            android:id="@+id/colorRed"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:background="@drawable/color_circle"
+            android:contentDescription="@string/red"
+            android:src="@android:color/holo_red_light" />
+
+        <ImageButton
+            android:id="@+id/colorGreen"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:background="@drawable/color_circle"
+            android:contentDescription="@string/green"
+            android:src="@android:color/holo_green_light" />
+
+        <ImageButton
+            android:id="@+id/colorBlue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:clickable="true"
+            android:background="@drawable/color_circle"
+            android:contentDescription="@string/blue"
+            android:src="@android:color/holo_blue_light" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_marginTop="@dimen/dp16"
         android:layout_marginEnd="@dimen/dp16"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/clear"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintTop_toBottomOf="@+id/colorPalette" />
 
     <Button
         android:id="@+id/clear"
         android:layout_width="@dimen/dp0"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_marginStart="@dimen/dp16"
         android:layout_marginEnd="@dimen/dp16"
         android:text="@string/clear"

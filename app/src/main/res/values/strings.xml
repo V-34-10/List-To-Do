@@ -10,4 +10,7 @@
     <string name="mes_dialog_no">No</string>
     <string name="first_notes">Text</string>
     <string name="text_btn_delete">Delete</string>
+    <string name="red">color_red</string>
+    <string name="green">color_green</string>
+    <string name="blue">color_blue</string>
 </resources>
