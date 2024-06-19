@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import com.tasks.notestodo.MyApplication
+import com.tasks.notestodo.R
 import com.tasks.notestodo.databinding.ActivityTaskBinding
 import com.tasks.notestodo.model.Task
 import com.tasks.notestodo.ui.viewmodels.TaskViewModel
@@ -67,7 +68,6 @@ class TaskActivity : AppCompatActivity() {
             }
             finish()
         }
-
         binding.clear.setOnClickListener {
             binding.title.editText?.text?.clear()
             binding.text.editText?.text?.clear()
@@ -78,32 +78,42 @@ class TaskActivity : AppCompatActivity() {
 
     private fun choiceSetColor() {
         binding.colorRed.setOnClickListener {
-            selectedColor = android.R.color.holo_red_light
+            selectedColor = R.color.red
             updateColorSelection()
         }
-
         binding.colorGreen.setOnClickListener {
-            selectedColor = android.R.color.holo_green_light
+            selectedColor = R.color.green
             updateColorSelection()
         }
-
         binding.colorBlue.setOnClickListener {
-            selectedColor = android.R.color.holo_blue_light
+            selectedColor = R.color.blue
             updateColorSelection()
         }
-
+        binding.colorOrange.setOnClickListener {
+            selectedColor = R.color.orange
+            updateColorSelection()
+        }
+        binding.colorPurple.setOnClickListener {
+            selectedColor = R.color.purple
+            updateColorSelection()
+        }
     }
 
     private fun updateColorSelection() {
-        binding.colorRed.setBackgroundResource(0) // Set background to null
+        binding.colorRed.setBackgroundResource(0)
         binding.colorGreen.setBackgroundResource(0)
         binding.colorBlue.setBackgroundResource(0)
+        binding.colorOrange.setBackgroundResource(0)
+        binding.colorPurple.setBackgroundResource(0)
 
-        // Now set alpha for the ImageButtons themselves:
-        binding.colorRed.alpha = if (selectedColor == android.R.color.holo_red_light) 1.0f else 0.5f
+        binding.colorRed.alpha = if (selectedColor == R.color.red) 1.0f else 0.5f
         binding.colorGreen.alpha =
-            if (selectedColor == android.R.color.holo_green_light) 1.0f else 0.5f
+            if (selectedColor == R.color.green) 1.0f else 0.5f
         binding.colorBlue.alpha =
-            if (selectedColor == android.R.color.holo_blue_light) 1.0f else 0.5f
+            if (selectedColor == R.color.blue) 1.0f else 0.5f
+        binding.colorOrange.alpha =
+            if (selectedColor == R.color.orange) 1.0f else 0.5f
+        binding.colorPurple.alpha =
+            if (selectedColor == R.color.purple) 1.0f else 0.5f
     }
 }
