@@ -14,4 +14,6 @@
     <string name="green">color_green</string>
     <string name="blue">color_blue</string>
     <string name="search_notes">Search</string>
+    <string name="orange">color orange</string>
+    <string name="purple">color purple</string>
 </resources>
