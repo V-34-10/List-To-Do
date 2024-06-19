@@ -12,7 +12,7 @@ import com.tasks.notestodo.ui.viewmodels.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val binding = ActivityMainBinding.inflate(layoutInflater)
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val viewModel: MainViewModel by viewModels {
         MainViewModel.MainViewModelFactory((application as MyApplication).repository)
