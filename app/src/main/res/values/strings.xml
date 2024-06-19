@@ -16,4 +16,5 @@
     <string name="search_notes">Search</string>
     <string name="orange">color orange</string>
     <string name="purple">color purple</string>
+    <string name="button_delete">button_delete</string>
 </resources>
