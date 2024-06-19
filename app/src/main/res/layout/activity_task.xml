@@ -64,7 +64,7 @@
             android:clickable="true"
             android:background="@drawable/color_circle"
             android:contentDescription="@string/red"
-            android:src="@android:color/holo_red_light" />
+            android:src="@color/red" />
 
         <ImageButton
             android:id="@+id/colorGreen"
@@ -74,7 +74,7 @@
             android:clickable="true"
             android:background="@drawable/color_circle"
             android:contentDescription="@string/green"
-            android:src="@android:color/holo_green_light" />
+            android:src="@color/green" />
 
         <ImageButton
             android:id="@+id/colorBlue"
@@ -84,7 +84,7 @@
             android:clickable="true"
             android:background="@drawable/color_circle"
             android:contentDescription="@string/blue"
-            android:src="@android:color/holo_blue_light" />
+            android:src="@color/blue" />
 
     </LinearLayout>
 
