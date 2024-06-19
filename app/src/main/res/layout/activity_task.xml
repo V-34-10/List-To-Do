@@ -21,6 +21,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:gravity="top"
             android:minLines="2"
             tools:ignore="TextContrastCheck" />
@@ -41,6 +42,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
             android:gravity="top"
             android:minLines="7"
             tools:ignore="TextContrastCheck" />
@@ -61,7 +63,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="4dp"
-            android:background="null"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:contentDescription="@string/red"
             android:src="@drawable/color_circle_red" />
@@ -71,7 +73,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="4dp"
-            android:background="null"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:contentDescription="@string/green"
             android:src="@drawable/color_circle_green" />
@@ -80,8 +82,8 @@
             android:id="@+id/colorBlue"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:background="@android:color/transparent"
             android:layout_margin="4dp"
-            android:background="null"
             android:clickable="true"
             android:contentDescription="@string/blue"
             android:src="@drawable/color_circle_blue" />
@@ -91,7 +93,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="4dp"
-            android:background="null"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:contentDescription="@string/orange"
             android:src="@drawable/color_circle_orange" />
@@ -101,7 +103,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="4dp"
-            android:background="null"
+            android:background="@android:color/transparent"
             android:clickable="true"
             android:contentDescription="@string/purple"
             android:src="@drawable/color_circle_purple" />
@@ -116,6 +118,7 @@
         android:layout_marginEnd="@dimen/dp16"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/montserrat"
         android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -130,6 +133,7 @@
         android:layout_marginEnd="@dimen/dp16"
         android:clickable="true"
         android:focusable="true"
+        android:fontFamily="@font/montserrat"
         android:text="@string/clear"
         app:layout_constraintEnd_toStartOf="@+id/save"
         app:layout_constraintHorizontal_bias="0.5"
