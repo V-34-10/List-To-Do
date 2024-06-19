@@ -7,7 +7,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.tasks.notestodo.model.Task
+import androidx.room.*
 
+@Dao
 interface TaskDao {
     @Query("SELECT * FROM tasks ORDER BY updated DESC")
     fun getAllTasks(): LiveData<List<Task>>
