@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 import com.tasks.notestodo.model.Task
 import com.tasks.notestodo.room.converter.DateConverter
 
-@Database(entities = [Task::class], version = 1)
+@Database(entities = [Task::class], version = 2)
 @TypeConverters(DateConverter::class)
 abstract class TasksDatabase : RoomDatabase() {
 
