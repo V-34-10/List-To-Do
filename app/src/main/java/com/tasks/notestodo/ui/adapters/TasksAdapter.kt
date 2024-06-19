@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -63,8 +64,13 @@ class TasksAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user = getItem(position)
-        holder.bind(user)
+        val task = getItem(position)
+        holder.bind(task)
+
+        // Set background color based on task.color
+        val context = holder.itemView.context
+        val backgroundColor = ContextCompat.getColor(context, task.color)
+        holder.itemView.setBackgroundColor(backgroundColor)
     }
 
     object UserDiffCallback : DiffUtil.ItemCallback<Task>() {
