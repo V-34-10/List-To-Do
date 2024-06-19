@@ -19,6 +19,10 @@ class TaskRepository(private val taskDao: TaskDao) {
         }.start()
     }
 
+    suspend fun searchNotes(query: String): List<Task> {
+        return taskDao.searchNotes("%$query%")
+    }
+
     fun updateTask(note: Task) = Thread { taskDao.updateTask(note) }.start()
 
     fun delete(note: Task) = Thread { taskDao.delete(note) }.start()
