@@ -25,4 +25,7 @@ interface TaskDao {
 
     @Delete
     fun delete(task: Task)
+
+    @Query("SELECT * FROM tasks WHERE title LIKE :query OR text LIKE :query")
+    suspend fun searchNotes(query: String): List<Task>
 }
