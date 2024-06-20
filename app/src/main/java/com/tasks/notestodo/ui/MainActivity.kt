@@ -69,9 +69,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSortOptions() {
-        val sortOptions = arrayOf("Date Created", "Date Modified", "Title")
+        val sortOptions = arrayOf("Date Created", "Date Modified", "Title", "Favorite")
         val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, sortOptions)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.sortSpinner.adapter = adapter
 
         binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                     0 -> viewModel.setSortMode(SortMode.DATE_CREATED)
                     1 -> viewModel.setSortMode(SortMode.DATE_MODIFIED)
                     2 -> viewModel.setSortMode(SortMode.TITLE)
+                    3 -> viewModel.setSortMode(SortMode.FAVORITE)
                 }
                 updateNotesBasedOnSortMode()
             }
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 SortMode.TITLE -> viewModel.notesByTitle.collect { adapter.submitList(it) }
-                else -> {}
+                SortMode.FAVORITE -> viewModel.favoriteNotes.collect { adapter.submitList(it) }
             }
         }
     }
