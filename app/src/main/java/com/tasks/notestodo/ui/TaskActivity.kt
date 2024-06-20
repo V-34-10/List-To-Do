@@ -19,6 +19,7 @@ class TaskActivity : AppCompatActivity() {
     private var editMode = false
     private val oldNote = MutableLiveData<Task>()
     private var selectedColor: Int = android.R.color.white
+    private var isFavorite = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskBinding.inflate(layoutInflater)
@@ -28,6 +29,13 @@ class TaskActivity : AppCompatActivity() {
         initControlButton()
         choiceSetColor()
         updateColorSelection()
+
+        oldNote.observe(this) { task ->
+            task?.let {
+                isFavorite = it.isFavorite
+                updateFavoriteButtonState()
+            }
+        }
     }
 
     private fun findEditTask() {
@@ -54,6 +62,7 @@ class TaskActivity : AppCompatActivity() {
                     it.text = binding.text.editText?.text.toString()
                     it.color = selectedColor
                     it.updated = date
+                    it.isFavorite = isFavorite
                     viewModel.updateTask(it)
                 }
             } else {
@@ -62,7 +71,8 @@ class TaskActivity : AppCompatActivity() {
                     text = binding.text.editText?.text.toString(),
                     color = selectedColor,
                     created = date,
-                    updated = date
+                    updated = date,
+                    isFavorite = isFavorite
                 )
                 viewModel.addTask(task)
             }
@@ -73,6 +83,18 @@ class TaskActivity : AppCompatActivity() {
             binding.text.editText?.text?.clear()
             selectedColor = android.R.color.white
             updateColorSelection()
+        }
+        binding.favoriteButton.setOnClickListener {
+            isFavorite = !isFavorite
+            updateFavoriteButtonState()
+        }
+    }
+
+    private fun updateFavoriteButtonState() {
+        if (isFavorite) {
+            binding.favoriteButton.setImageResource(R.drawable.baseline_favorite_24)
+        } else {
+            binding.favoriteButton.setImageResource(R.drawable.baseline_favorite_border_24)
         }
     }
 
