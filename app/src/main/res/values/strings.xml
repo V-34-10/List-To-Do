@@ -2,4 +2,9 @@
     <string name="app_name">SnapNotes</string>
     <string name="add_note">add note</string>
     <string name="search_notes">Search</string>
+    <string name="name_title">Title</string>
+    <string name="textNote">text Note</string>
+    <string name="dateCreate">date create note</string>
+    <string name="dateCreateNote">20.06.24</string>
+    <string name="image_note">" image note"</string>
 </resources>
