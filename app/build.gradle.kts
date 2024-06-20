@@ -46,7 +46,7 @@ dependencies {
 
     // Room components
     implementation("androidx.room:room-ktx:2.5.1")
-    kapt ("androidx.room:room-compiler:2.5.1")
+    kapt("androidx.room:room-compiler:2.5.1")
     androidTestImplementation("androidx.room:room-testing:2.5.1")
 
     // Lifecycle components
@@ -56,6 +56,9 @@ dependencies {
 
     //card-view
     implementation("androidx.cardview:cardview:1.0.0")
+
+    // Import Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
