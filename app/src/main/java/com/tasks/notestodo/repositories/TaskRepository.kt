@@ -29,4 +29,5 @@ class TaskRepository(private val taskDao: TaskDao) {
     fun updateTask(note: Task) = Thread { taskDao.updateTask(note) }.start()
 
     fun delete(note: Task) = Thread { taskDao.delete(note) }.start()
+    fun getFavoriteTasks(): Flow<List<Task>> = taskDao.getFavoriteTasks()
 }
