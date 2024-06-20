@@ -17,4 +17,5 @@
     <string name="orange">color orange</string>
     <string name="purple">color purple</string>
     <string name="button_delete">button_delete</string>
+    <string name="favorite">button favorite</string>
 </resources>
