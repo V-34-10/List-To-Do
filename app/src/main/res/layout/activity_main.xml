@@ -14,7 +14,7 @@
         android:layout_margin="16dp"
         android:hint="@string/search_notes"
         app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/sortSpinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/baseline_search_24">
@@ -28,6 +28,19 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/sortSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:popupBackground="@drawable/spinner_dropdown_background"
+        app:backgroundTint="@color/gray"
+        app:endIconDrawable="@drawable/baseline_filter_alt_24"
+        app:endIconTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/search_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/search_layout" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="0dp"
@@ -36,7 +49,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/sortSpinner" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
