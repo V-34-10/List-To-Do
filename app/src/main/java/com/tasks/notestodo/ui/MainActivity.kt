@@ -1,7 +1,11 @@
 package com.tasks.notestodo.ui
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
@@ -9,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tasks.notestodo.MyApplication
 import com.tasks.notestodo.databinding.ActivityMainBinding
+import com.tasks.notestodo.model.SortMode
 import com.tasks.notestodo.ui.adapters.TasksAdapter
 import com.tasks.notestodo.ui.viewmodels.MainViewModel
 import kotlinx.coroutines.launch
@@ -28,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         initRecycler()
         initFab()
         initSearch()
+        initSortOptions()
     }
 
     private fun initSearch() {
@@ -60,5 +66,51 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFab() {
         binding.fab.setOnClickListener { startActivity(Intent(this, TaskActivity::class.java)) }
+    }
+
+    private fun initSortOptions() {
+        val sortOptions = arrayOf("Date Created", "Date Modified", "Title")
+        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, sortOptions)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.sortSpinner.adapter = adapter
+
+        binding.sortSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (position) {
+                    0 -> viewModel.setSortMode(SortMode.DATE_CREATED)
+                    1 -> viewModel.setSortMode(SortMode.DATE_MODIFIED)
+                    2 -> viewModel.setSortMode(SortMode.TITLE)
+                }
+                updateNotesBasedOnSortMode()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+
+    private fun updateNotesBasedOnSortMode() {
+        lifecycleScope.launch {
+            when (viewModel.sortMode.value) {
+                SortMode.DATE_CREATED -> viewModel.notesByDateCreated.collect {
+                    adapter.submitList(
+                        it
+                    )
+                }
+
+                SortMode.DATE_MODIFIED -> viewModel.notesByDateModified.collect {
+                    adapter.submitList(
+                        it
+                    )
+                }
+
+                SortMode.TITLE -> viewModel.notesByTitle.collect { adapter.submitList(it) }
+                else -> {}
+            }
+        }
     }
 }
