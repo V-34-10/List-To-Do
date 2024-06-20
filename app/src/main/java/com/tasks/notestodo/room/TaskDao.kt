@@ -38,4 +38,10 @@ interface TaskDao {
 
     @Query("SELECT * FROM tasks ORDER BY title ASC")
     fun getAllTasksByTitle(): Flow<List<Task>>
+
+    @Query("UPDATE tasks SET isFavorite = :isFavorite WHERE id = :taskId")
+    suspend fun updateFavoriteStatus(taskId: Long, isFavorite: Boolean)
+
+    @Query("SELECT * FROM tasks WHERE isFavorite = 1 ORDER BY updated DESC")
+    fun getFavoriteTasks(): Flow<List<Task>>
 }
