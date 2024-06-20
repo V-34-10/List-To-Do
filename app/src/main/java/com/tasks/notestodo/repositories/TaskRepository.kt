@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tasks.notestodo.model.Task
 import com.tasks.notestodo.room.TaskDao
+import kotlinx.coroutines.flow.Flow
 
 class TaskRepository(private val taskDao: TaskDao) {
 
     val tasks: LiveData<List<Task>> = taskDao.getAllTasks()
-
+    val tasksByDateCreated: Flow<List<Task>> = taskDao.getAllTasksByDateCreated()
+    val tasksByDateModified: Flow<List<Task>> = taskDao.getAllTasksByDateModified()
+    val tasksByTitle: Flow<List<Task>> = taskDao.getAllTasksByTitle()
     fun addTask(note: Task) = Thread { taskDao.insert(note) }.start()
 
     fun getTaskById(oldNote: MutableLiveData<Task>, id: Long) {

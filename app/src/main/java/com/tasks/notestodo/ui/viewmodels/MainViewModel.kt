@@ -2,12 +2,21 @@ package com.tasks.notestodo.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.tasks.notestodo.model.SortMode
 import com.tasks.notestodo.model.Task
 import com.tasks.notestodo.repositories.TaskRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 
 class MainViewModel(private val repo: TaskRepository) : ViewModel() {
+    private val _sortMode = MutableStateFlow(SortMode.DATE_CREATED)
+    val sortMode: StateFlow<SortMode> = _sortMode
+
+    val notesByDateCreated = repo.tasksByDateCreated
+    val notesByDateModified = repo.tasksByDateModified
+    val notesByTitle = repo.tasksByTitle
 
     val notes = repo.tasks
 
@@ -19,6 +28,10 @@ class MainViewModel(private val repo: TaskRepository) : ViewModel() {
         } else {
             emit(repo.searchNotes(query))
         }
+    }
+
+    fun setSortMode(mode: SortMode) {
+        _sortMode.value = mode
     }
 
     class MainViewModelFactory(private val repo: TaskRepository) : ViewModelProvider.Factory {
