@@ -7,9 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.snes.snapnotes.model.Note
 import com.snes.snapnotes.room.converter.DateConverter
+import com.snes.snapnotes.room.converter.UriConverter
 
-@Database(entities = [Note::class], version = 1)
-@TypeConverters(DateConverter::class)
+@Database(entities = [Note::class], version = 2)
+@TypeConverters(DateConverter::class, UriConverter::class)
 abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
