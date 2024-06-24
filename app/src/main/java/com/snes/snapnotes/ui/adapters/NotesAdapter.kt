@@ -3,10 +3,12 @@ package com.snes.snapnotes.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.snes.snapnotes.R
 import com.snes.snapnotes.model.Note
 
@@ -20,7 +22,10 @@ class NotesAdapter(
         view: View,
         val onClick: (Note) -> Unit
     ) : RecyclerView.ViewHolder(view) {
-        private val title = view.findViewById<TextView>(R.id.textNote)
+        private val title = view.findViewById<TextView>(R.id.titleNote)
+        private val text = view.findViewById<TextView>(R.id.textNote)
+        private val dateCreate = view.findViewById<TextView>(R.id.dateCreate)
+        private val imageNote = view.findViewById<ImageView>(R.id.imageNote)
         private var note: Note? = null
 
         init {
@@ -34,6 +39,13 @@ class NotesAdapter(
         fun bind(note: Note) {
             this.note = note
             this.title.text = note.title
+            this.text.text = note.text
+            this.dateCreate.text = note.created.toString()
+
+            Glide.with(itemView.context)
+                .load(note.image)
+                .placeholder(R.drawable.baseline_image_24)
+                .into(imageNote)
         }
     }
 
@@ -56,6 +68,7 @@ class NotesAdapter(
         override fun areContentsTheSame(
             oldItem: Note,
             newItem: Note
-        ) = oldItem.title == newItem.title && oldItem.text == newItem.text
+        ) =
+            oldItem.title == newItem.title && oldItem.text == newItem.text && oldItem.created == newItem.created
     }
 }
