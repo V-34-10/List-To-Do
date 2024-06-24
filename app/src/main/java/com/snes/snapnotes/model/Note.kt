@@ -1,5 +1,6 @@
 package com.snes.snapnotes.model
 
+import android.net.Uri
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
@@ -11,5 +12,6 @@ data class Note(
     var text: String = "",
     var created: Date = Date(),
     var updated: Date = Date(),
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+    var image: Uri? = null
 )
