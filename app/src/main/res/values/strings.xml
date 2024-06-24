@@ -7,4 +7,8 @@
     <string name="dateCreate">date create note</string>
     <string name="dateCreateNote">20.06.24</string>
     <string name="image_note">" image note"</string>
+    <string name="note_text">Note Text</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="note_title">Note Title</string>
 </resources>
