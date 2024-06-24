@@ -33,11 +33,11 @@ interface NoteDao {
     @Query("SELECT * FROM notes ORDER BY created ASC")
     fun getAllTasksByDateCreated(): Flow<List<Note>>
 
-    @Query("SELECT * FROM notes ORDER BY updated ASC")
-    fun getAllTasksByDateModified(): Flow<List<Note>>
-
     @Query("SELECT * FROM notes ORDER BY title ASC")
     fun getAllTasksByTitle(): Flow<List<Note>>
+
+    @Query("SELECT * FROM notes ORDER BY text ASC")
+    fun getAllTasksByText(): Flow<List<Note>>
 
     @Query("UPDATE notes SET isFavorite = :isFavorite WHERE id = :taskId")
     suspend fun updateFavoriteStatus(taskId: Long, isFavorite: Boolean)

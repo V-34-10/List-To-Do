@@ -10,8 +10,8 @@ class NoteRepository(private val taskDao: NoteDao) {
 
     val tasks: LiveData<List<Note>> = taskDao.getAllTasks()
     val tasksByDateCreated: Flow<List<Note>> = taskDao.getAllTasksByDateCreated()
-    val tasksByDateModified: Flow<List<Note>> = taskDao.getAllTasksByDateModified()
     val tasksByTitle: Flow<List<Note>> = taskDao.getAllTasksByTitle()
+    val tasksByText: Flow<List<Note>> = taskDao.getAllTasksByText()
     fun addTask(note: Note) = Thread { taskDao.insert(note) }.start()
 
     fun getTaskById(oldNote: MutableLiveData<Note>, id: Long) {
